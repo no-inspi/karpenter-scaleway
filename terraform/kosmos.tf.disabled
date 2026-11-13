@@ -1,0 +1,40 @@
+# Kosmos cluster (type="multicloud", cni="kilo").
+#
+# Active form for P12 Kosmos validation. Swap with kapsule.tf.disabled to
+# switch back. Provider rejects mixing both in the same workspace because
+# they share resource names (scaleway_k8s_cluster.spike).
+#
+# Gotchas (see memory: scaleway_kosmos_gotchas.md) :
+#   #1 type = "multicloud", not "kosmos"
+#   #2 cni  = "kilo" (kilo is the only CNI accepted on multicloud)
+#   #3 size >= 1 (multicloud cluster cannot have less than 1 node)
+#       — combined with wait_for_pool_ready = false so terraform doesn't
+#         hang waiting for an external node to register
+#   #9 pool/cluster ids stored as "<region>/<uuid>" by the provider — output
+#      strips the region prefix to keep API URL paths consistent
+
+resource "scaleway_k8s_cluster" "spike" {
+  name                        = "karpenter-spike-kosmos"
+  type                        = "multicloud"
+  version                     = var.k8s_version
+  cni                         = "kilo"
+  region                      = var.region
+  delete_additional_resources = true
+  description                 = "Karpenter Scaleway dev cluster"
+
+  tags = ["spike", "karpenter", "delete-me"]
+}
+
+resource "scaleway_k8s_pool" "external" {
+  cluster_id          = scaleway_k8s_cluster.spike.id
+  name                = "karpenter-managed"
+  node_type           = "external"
+  size                = 1
+  min_size            = 0
+  max_size            = 10
+  autoscaling         = false
+  region              = var.region
+  wait_for_pool_ready = false
+
+  tags = ["spike", "karpenter"]
+}

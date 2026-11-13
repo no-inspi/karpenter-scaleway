@@ -1,0 +1,39 @@
+# .golangci.yml — shared by `make lint-ci` and the CI lint job.
+# Deliberately modest: useful linters only, to be tightened over time.
+
+run:
+  timeout: 5m
+  # No 'go: "1.26"': the golangci-lint v1.64.8 binary from GitHub releases
+  # is built with Go 1.24 and refuses to lint when the targeted Go (`go:`
+  # here) is newer than its own toolchain. Without this field it targets
+  # its native Go (1.24), which is fine for this code (stdlib + generics
+  # 1.18+). Remove once golangci-lint is bumped to a Go 1.26+ build.
+  tests: true
+
+linters:
+  disable-all: true
+  enable:
+    - errcheck       # unchecked errors
+    - gosimple       # simplifications
+    - govet          # `go vet` (also used by `make lint`)
+    - ineffassign    # ineffectual assignments
+    - staticcheck    # bugs and anti-patterns
+    - unused         # dead code
+    - misspell       # spelling mistakes
+    - goimports      # import ordering
+
+linters-settings:
+  goimports:
+    local-prefixes: github.com/no-inspi/karpenter-scaleway
+
+issues:
+  exclude-dirs:
+    - vendor
+    - charts
+  # Ignore findings in vendor/ and generated code.
+  exclude-rules:
+    - path: zz_generated\..*\.go
+      linters:
+        - errcheck
+        - staticcheck
+        - unused

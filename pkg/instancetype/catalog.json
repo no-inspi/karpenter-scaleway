@@ -1,0 +1,5038 @@
+{
+  "generatedAt": "2026-11-10T18:08:15Z",
+  "sdkVersion": "v1.0.0-beta.36",
+  "denylist": {
+    "endOfService": true,
+    "gpu": true,
+    "namePrefixes": [
+      "STARDUST"
+    ]
+  },
+  "types": [
+    {
+      "name": "BASIC2-A12C-24G",
+      "arch": "arm64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1578,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1578,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1578,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A12C-48G",
+      "arch": "arm64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1807,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1807,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1807,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A16C-32G",
+      "arch": "arm64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2067,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2067,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2067,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A16C-64G",
+      "arch": "arm64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2756,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2756,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2756,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A2C-4G",
+      "arch": "arm64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.023,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.023,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.023,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A2C-8G",
+      "arch": "arm64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0345,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0345,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0345,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A4C-16G",
+      "arch": "arm64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0689,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0689,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0689,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A4C-8G",
+      "arch": "arm64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0517,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0517,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0517,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A6C-12G",
+      "arch": "arm64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 12884901888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0789,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0789,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0789,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A6C-24G",
+      "arch": "arm64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0903,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0903,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0903,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A8C-16G",
+      "arch": "arm64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1034,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1034,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1034,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC2-A8C-32G",
+      "arch": "arm64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1378,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1378,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1378,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X12C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2711,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2711,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2711,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2711,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X12C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3104,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3104,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3104,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3104,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X16C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.355247,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.355247,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.355247,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.355247,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X16C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.473285,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.473285,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.473285,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.473285,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X2C-4G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.039449,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.039449,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.039449,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.039449,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X2C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.059225,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.059225,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.059225,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.059225,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X4C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.11845,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.11845,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.11845,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.11845,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X4C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.079001,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.079001,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.079001,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.079001,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X6C-12G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 12884901888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1356,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1356,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1356,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1356,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X6C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1553,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1553,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1553,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1553,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X8C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.177675,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.177675,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.177675,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.177675,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "BASIC3-X8C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.236797,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.236797,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.236797,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.236797,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X12C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3511,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3511,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3511,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3511,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X16C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4682,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4682,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4682,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4682,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X24C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7022,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7022,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7022,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7022,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X2C-4G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0585,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0585,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0585,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0585,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X32C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9363,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9363,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9363,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9363,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X48C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.397,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.397,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.397,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.397,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X4C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.117,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.117,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.117,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.117,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X64C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8726,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8726,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8726,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8726,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X6C-12G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 12884901888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1756,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1756,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1756,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1756,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X8C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2341,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2341,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2341,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2341,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "COMPUTE3-X96C-192G",
+      "arch": "amd64",
+      "cpuMillicores": 96000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.794,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.794,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.794,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.794,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "DEV1-L",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.04284,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "DEV1-M",
+      "arch": "amd64",
+      "cpuMillicores": 3000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.020196,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "DEV1-S",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 2147483648,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.008976,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "DEV1-XL",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 12884901888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.065076,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "GP1-L",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.16178,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.77418,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "GP1-M",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.57528,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.38352,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "GP1-S",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.28662,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.19074,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "GP1-XL",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.51073,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.67382,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "GP1-XS",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.13974,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.09282,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X12C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6798,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6798,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6798,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6798,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X16C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9064,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9064,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9064,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9064,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X24C-192G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3596,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3596,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3596,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3596,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X2C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1133,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1133,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1133,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1133,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X32C-256G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8128,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8128,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8128,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.8128,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X48C-384G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 412316860416,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.717,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.717,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.717,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.717,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X4C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2266,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2266,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2266,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2266,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X6C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3399,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3399,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3399,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3399,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "MEMORY3-X8C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4532,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4532,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4532,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4532,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PLAY2-MICRO",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.05508,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PLAY2-NANO",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.02754,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PLAY2-PICO",
+      "arch": "amd64",
+      "cpuMillicores": 1000,
+      "memoryBytes": 2147483648,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.01428,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-12C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6525,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-16C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.59,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-16C-64G-WIN",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.4567,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.4567,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-24C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3275,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.885,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-2C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1103,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0735,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-2C-8G-WIN",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1823,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1823,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-32C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.18,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-32C-128G-WIN",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.9133,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.9133,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-48C-192G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.655,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.77,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-4C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.147,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-4C-16G-WIN",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3637,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3637,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-64C-256G",
+      "arch": "amd64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.525,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.35,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-6C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.33075,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2205,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-8C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.435,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.29,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-8C-32G-WIN",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7233,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7233,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-12C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4788,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-16C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4256,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-24C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9576,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6384,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-2C-4G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0798,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0532,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-32C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.2768,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.8512,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-48C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.905,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.27,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-4C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1064,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-64C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.5536,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.7024,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-6C-12G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 12884901888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2394,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1596,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HC-8C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3192,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2128,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-12C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.927,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-16C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.824,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-24C-192G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.854,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.236,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-2C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1545,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.103,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-32C-256G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.472,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.648,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-48C-384G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 412316860416,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.705,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.47,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-4C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.206,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-64C-512G",
+      "arch": "amd64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 549755813888,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": false
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 4.944,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": false
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 3.296,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-6C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4635,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.309,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HM-8C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.618,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.412,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HN-10",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.0896,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.7264,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HN-3",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 4294967296,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3831,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2554,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "POP2-HN-5",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6786,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4524,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PRO2-L",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.3413,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.89454,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PRO2-M",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.67116,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.44676,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PRO2-S",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.33558,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.22338,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PRO2-XS",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.16728,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1122,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "PRO2-XXS",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "fr-par-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.08364,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        },
+        {
+          "zone": "pl-waw-3",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0561,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A12C-48G",
+      "arch": "arm64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3068,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3068,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.3068,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A16C-64G",
+      "arch": "arm64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.5039,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.5039,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.5039,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A24C-96G",
+      "arch": "arm64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6551,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6551,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.6551,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A2C-8G",
+      "arch": "arm64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0586,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0586,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0586,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A32C-128G",
+      "arch": "arm64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.0078,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.0078,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.0078,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A48C-192G",
+      "arch": "arm64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.5117,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.5117,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.5117,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A4C-16G",
+      "arch": "arm64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1171,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1171,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1171,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A64C-256G",
+      "arch": "arm64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.0142,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.0142,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.0142,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A6C-24G",
+      "arch": "arm64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1533,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1533,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1533,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD2-A8C-32G",
+      "arch": "arm64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2343,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2343,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2343,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X12C-48G",
+      "arch": "amd64",
+      "cpuMillicores": 12000,
+      "memoryBytes": 51539607552,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4626,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4626,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4626,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.4626,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X16C-64G",
+      "arch": "amd64",
+      "cpuMillicores": 16000,
+      "memoryBytes": 68719476736,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.649,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.649,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.649,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.649,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X24C-96G",
+      "arch": "amd64",
+      "cpuMillicores": 24000,
+      "memoryBytes": 103079215104,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9411,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9411,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9411,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.9411,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X2C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0809,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0809,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0809,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.0809,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X32C-128G",
+      "arch": "amd64",
+      "cpuMillicores": 32000,
+      "memoryBytes": 137438953472,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.298,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.298,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.298,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.298,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X48C-192G",
+      "arch": "amd64",
+      "cpuMillicores": 48000,
+      "memoryBytes": 206158430208,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.947,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.947,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.947,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 1.947,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X4C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1617,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1617,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1617,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.1617,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X64C-256G",
+      "arch": "amd64",
+      "cpuMillicores": 64000,
+      "memoryBytes": 274877906944,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.585,
+          "available": false
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.585,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.585,
+          "available": false
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 2.585,
+          "available": false
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X6C-24G",
+      "arch": "amd64",
+      "cpuMillicores": 6000,
+      "memoryBytes": 25769803776,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2345,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2345,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2345,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.2345,
+          "available": true
+        }
+      ]
+    },
+    {
+      "name": "STANDARD3-X8C-32G",
+      "arch": "amd64",
+      "cpuMillicores": 8000,
+      "memoryBytes": 34359738368,
+      "podsPerNode": 110,
+      "offerings": [
+        {
+          "zone": "fr-par-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.319,
+          "available": true
+        },
+        {
+          "zone": "fr-par-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.319,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-1",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.319,
+          "available": true
+        },
+        {
+          "zone": "nl-ams-2",
+          "capacityType": "on-demand",
+          "priceEURhr": 0.319,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

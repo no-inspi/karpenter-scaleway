@@ -1,0 +1,92 @@
+# .github/workflows/cleanup-zombies.yml — every 6h, list the Scaleway
+# clusters tagged karpenter-e2e=true older than 2h and destroy them.
+# Safety net for failed e2e.yml teardowns (Ctrl-C, runner killed, harness
+# panic, network blip).
+#
+# 2h = e2e job timeout (60 min) + at least 1h of slack: a healthy cluster
+# in a running job cannot be older than 60 min, so anything >= 2h is
+# orphaned by definition.
+
+name: cleanup-zombies
+
+on:
+  # Cron disabled. Uncomment to re-enable (every 6h = 4 runs/day).
+  # schedule:
+  #   - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions: {}  # no repo access needed; uses external Scaleway API only
+
+concurrency:
+  group: cleanup-zombies
+  cancel-in-progress: false  # never cancel mid-delete; queue instead.
+
+env:
+  SCW_VERSION: "v2.39.0"
+  ZOMBIE_THRESHOLD_HOURS: "2"
+
+jobs:
+  reap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      SCW_DEFAULT_ORGANIZATION_ID: ${{ secrets.SCW_DEFAULT_ORGANIZATION_ID }}
+      SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
+    steps:
+      - name: Install scw CLI
+        run: |
+          set -euo pipefail
+          # Verify the actual artifact name on github.com/scaleway/scaleway-cli/releases
+          # if this 404s. The naming convention as of v2.39.0 is
+          # scaleway-cli_<version-without-v>_linux_amd64.
+          curl -fsSL -o /tmp/scw \
+            "https://github.com/scaleway/scaleway-cli/releases/download/${SCW_VERSION}/scaleway-cli_${SCW_VERSION#v}_linux_amd64"
+          chmod +x /tmp/scw
+          /tmp/scw version
+          sudo mv /tmp/scw /usr/local/bin/scw
+
+      - name: List + reap zombie clusters
+        run: |
+          set -euo pipefail
+          THRESHOLD_SEC=$(( ZOMBIE_THRESHOLD_HOURS * 3600 ))
+          NOW_TS=$(date -u +%s)
+          REGIONS="fr-par nl-ams pl-waw"
+          REAPED=0
+
+          for REG in $REGIONS; do
+            echo "::group::region $REG"
+            scw -o json k8s cluster list region="$REG" \
+              | jq -r '.[] | select(.tags // [] | index("karpenter-e2e=true")) | "\(.id) \(.created_at) \(.name)"' \
+              | while read CID CREATED CNAME; do
+                  CREATED_TS=$(date -u -d "$CREATED" +%s)
+                  AGE=$(( NOW_TS - CREATED_TS ))
+                  if (( AGE > THRESHOLD_SEC )); then
+                    echo "DELETE $CID ($CNAME, age ${AGE}s)"
+                    scw -o json k8s cluster delete "$CID" region="$REG" with-additional-resources=true || true
+                    REAPED=$((REAPED + 1))
+                  else
+                    echo "KEEP   $CID ($CNAME, age ${AGE}s)"
+                  fi
+                done
+            echo "::endgroup::"
+          done
+          echo "reaped=$REAPED" >> $GITHUB_OUTPUT
+        id: reap
+
+      - name: Reap orphan IAM apps tagged karpenter-e2e
+        run: |
+          set -euo pipefail
+          THRESHOLD_SEC=$(( ZOMBIE_THRESHOLD_HOURS * 3600 ))
+          NOW_TS=$(date -u +%s)
+          scw -o json iam application list \
+            | jq -r '.[] | select(.name | startswith("karpenter-e2e-") and endswith("-controller")) | "\(.id) \(.created_at) \(.name)"' \
+            | while read AID CREATED ANAME; do
+                CREATED_TS=$(date -u -d "$CREATED" +%s)
+                AGE=$(( NOW_TS - CREATED_TS ))
+                if (( AGE > THRESHOLD_SEC )); then
+                  echo "DELETE iam-app $AID ($ANAME, age ${AGE}s)"
+                  scw iam application delete "$AID" || true
+                fi
+              done

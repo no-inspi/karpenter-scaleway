@@ -1,0 +1,3 @@
+cycle,instance_type,T0_C,T1_C,duration_C,duration_B,duration_A,verdict
+1,GP1-XS,1777714769,1777714770,1,121,121,PASS
+2,GP1-XS,1777714981,1777715090,109,,,FAIL

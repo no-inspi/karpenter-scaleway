@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a new feature or a change in behaviour.
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pull requests are only accepted for issues labelled `accepted`.
+        Please describe the need first; the approach is agreed on here
+        before any code is written.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Use case
+      description: What are you trying to do, and why does the current behaviour not work for you?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to open a pull request once this issue is accepted.

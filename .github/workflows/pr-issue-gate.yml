@@ -1,0 +1,73 @@
+# Closes pull requests from external contributors that do not link an
+# issue labelled `accepted` (see CONTRIBUTING.md).
+#
+# Security: pull_request_target runs with a write token, so this workflow
+# must NEVER check out or execute code from the pull request. It only calls
+# the GitHub API, and PR fields are read from the event payload inside the
+# script (never interpolated into a shell command).
+
+name: PR issue gate
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: pr-issue-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.state == 'open'
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const trusted = ['OWNER', 'MEMBER', 'COLLABORATOR'];
+            if (trusted.includes(pr.author_association) || pr.user.type === 'Bot') {
+              core.info(`Trusted author (${pr.author_association}), skipping.`);
+              return;
+            }
+
+            const { repository } = await github.graphql(`
+              query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  pullRequest(number: $number) {
+                    closingIssuesReferences(first: 10) {
+                      nodes { number labels(first: 20) { nodes { name } } }
+                    }
+                  }
+                }
+              }`, { owner: context.repo.owner, repo: context.repo.repo, number: pr.number });
+
+            const issues = repository.pullRequest.closingIssuesReferences.nodes;
+            const accepted = issues.filter(i => i.labels.nodes.some(l => l.name === 'accepted'));
+            if (accepted.length > 0) {
+              core.info(`Linked accepted issue(s): ${accepted.map(i => '#' + i.number).join(', ')}`);
+              return;
+            }
+
+            const reason = issues.length === 0
+              ? 'it does not link an issue'
+              : `the linked issue(s) (${issues.map(i => '#' + i.number).join(', ')}) are not labelled \`accepted\` yet`;
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: pr.number,
+              body: [
+                `Thanks for your contribution! This pull request is closed automatically because ${reason}.`,
+                '',
+                'This project works **issue first**: open an issue, wait for it to be labelled `accepted`, then link it in the pull request description with `Closes #<issue>` and reopen this pull request.',
+                '',
+                `See [CONTRIBUTING.md](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/master/CONTRIBUTING.md) for details.`,
+              ].join('\n'),
+            });
+            await github.rest.pulls.update({ ...context.repo, pull_number: pr.number, state: 'closed' });

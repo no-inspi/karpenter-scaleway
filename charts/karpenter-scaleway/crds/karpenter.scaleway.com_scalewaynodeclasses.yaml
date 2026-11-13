@@ -1,0 +1,160 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: scalewaynodeclasses.karpenter.scaleway.com
+spec:
+  group: karpenter.scaleway.com
+  names:
+    kind: ScalewayNodeClass
+    listKind: ScalewayNodeClassList
+    plural: scalewaynodeclasses
+    singular: scalewaynodeclass
+    shortNames:
+      - scwnc
+  scope: Cluster
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Zones
+          type: string
+          jsonPath: .status.resolvedZones
+        - name: Image
+          type: string
+          jsonPath: .spec.imageLabel
+        - name: Ready
+          type: string
+          jsonPath: .status.conditions[?(@.type=="Ready")].status
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      schema:
+        openAPIV3Schema:
+          description: |
+            ScalewayNodeClass is the schema describing how Karpenter should
+            provision Scaleway instances on Kapsule or Kosmos clusters.
+          type: object
+          properties:
+            apiVersion:
+              type: string
+            kind:
+              type: string
+            metadata:
+              type: object
+            spec:
+              type: object
+              required:
+                - imageLabel
+              properties:
+                zones:
+                  type: array
+                  description: |
+                    Optional whitelist of Scaleway zones where instances may
+                    be provisioned. Empty or omitted means all 9 zones are
+                    eligible; the actual zone is chosen by the Karpenter
+                    scheduler from instanceTypeOfferings.
+                  maxItems: 9
+                  items:
+                    type: string
+                    enum:
+                      - fr-par-1
+                      - fr-par-2
+                      - fr-par-3
+                      - nl-ams-1
+                      - nl-ams-2
+                      - nl-ams-3
+                      - pl-waw-1
+                      - pl-waw-2
+                      - pl-waw-3
+                imageLabel:
+                  type: string
+                  description: |
+                    Scaleway Marketplace image label or UUID. Must reference a
+                    cloud-init enabled image. Validated at reconcile time.
+                  minLength: 1
+                  maxLength: 255
+                tags:
+                  type: object
+                  description: |
+                    Tags propagated to the underlying Scaleway resource
+                    (Instance for Kosmos, Pool for Kapsule). Up to 50 entries.
+                  additionalProperties:
+                    type: string
+                  maxProperties: 50
+                rootVolumeSizeGB:
+                  type: integer
+                  format: int32
+                  description: |
+                    Root volume size in gigabytes. Backend Kosmos only —
+                    silently ignored on Kapsule.
+                  minimum: 10
+                  maximum: 10000
+                rootVolumeType:
+                  type: string
+                  description: |
+                    Scaleway volume type for the root volume. Backend Kosmos
+                    only — silently ignored on Kapsule.
+                  enum:
+                    - l_ssd
+                    - sbs_volume
+                publicIP:
+                  type: boolean
+                  description: |
+                    Whether instances get a public IPv4. Backend Kosmos only.
+                    Required (true) for k8s-agent registration.
+            status:
+              type: object
+              properties:
+                conditions:
+                  type: array
+                  description: Conditions exposing the readiness of the NodeClass.
+                  items:
+                    type: object
+                    required:
+                      - type
+                      - status
+                      - lastTransitionTime
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                          - "True"
+                          - "False"
+                          - "Unknown"
+                      observedGeneration:
+                        type: integer
+                        format: int64
+                      lastTransitionTime:
+                        type: string
+                        format: date-time
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                unusedFieldsForBackend:
+                  type: array
+                  description: |
+                    Spec fields the resolved backend ignores. Surfaced in
+                    `kubectl describe` to flag configuration mistakes.
+                  items:
+                    type: string
+                validatedAt:
+                  type: string
+                  format: date-time
+                  description: Last time the spec was validated successfully.
+                resolvedImageID:
+                  type: string
+                  description: Scaleway image UUID resolved from imageLabel.
+                resolvedZones:
+                  type: array
+                  description: |
+                    Effective list of zones eligible for this NodeClass:
+                    spec.zones if non-empty, otherwise the 9 default zones.
+                  items:
+                    type: string

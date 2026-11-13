@@ -1,0 +1,7 @@
+apiVersion: karpenter.scaleway.com/v1alpha1
+kind: ScalewayNodeClass
+metadata:
+  name: default
+spec:
+  zones: ["fr-par-1"]
+  imageLabel: ubuntu_jammy

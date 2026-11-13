@@ -1,0 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
+# Bootstrap external node for the Kosmos E2E cluster.
+#
+# This mirrors docs/getting-started.md "Step 2a — Seed a worker node" and the
+# provider's own cloud-init (pkg/scaleway/cloudinit.go), MINUS the
+# karpenter.sh/unregistered:NoSchedule taint: this node is deliberately
+# schedulable so kube-system + the Karpenter controller land on it. Karpenter
+# never manages this node (no NodeClaim backs it), so the taint is unwanted.
+#
+# k8s-agent --kosmos is a one-shot installer: it registers the node via the
+# Scaleway API (POST /k8s/v1/regions/<region>/pools/<id>/external-nodes/auth),
+# installs kubelet + containerd + CNI, then exits. kubelet keeps running.
+
+curl --retry 5 --retry-delay 2 --retry-all-errors -fsSLo /usr/local/bin/k8s-agent "${k8s_agent_url}"
+chmod +x /usr/local/bin/k8s-agent
+
+POOL_ID=${pool_id} \
+POOL_REGION=${pool_region} \
+SCW_SECRET_KEY=${api_key} \
+/usr/local/bin/k8s-agent --kosmos

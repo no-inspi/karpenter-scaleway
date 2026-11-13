@@ -1,0 +1,132 @@
+{{- if .Values.prometheusRule.enabled }}
+{{- $sel := printf "job=%q, namespace=%q" (include "karpenter-scaleway.fullname" .) .Release.Namespace -}}
+{{- $disabled := .Values.prometheusRule.disabled | default list -}}
+{{- $t := .Values.prometheusRule.thresholds -}}
+{{- $extraLabels := .Values.prometheusRule.additionalAlertLabels -}}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  namespace: {{ default .Release.Namespace .Values.prometheusRule.namespace }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+    {{- with .Values.prometheusRule.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  groups:
+    - name: karpenter-scaleway
+      rules:
+        {{- if and .Values.serviceMonitor.enabled (not (has "KarpenterScalewayControllerDown" $disabled)) }}
+        # absent() fires forever when nothing scrapes job=<service name>, so
+        # only render it alongside the bundled ServiceMonitor.
+        - alert: KarpenterScalewayControllerDown
+          expr: absent(up{ {{- $sel -}} } == 1)
+          for: 5m
+          labels:
+            severity: critical
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: karpenter-scaleway controller is down
+            description: No karpenter-scaleway controller replica has been scraped successfully in namespace {{ .Release.Namespace }} for 5 minutes. Pending pods will not get new nodes.
+        {{- end }}
+        {{- if and .Values.leaderElection.enabled (not (has "KarpenterScalewayNoLeader" $disabled)) }}
+        - alert: KarpenterScalewayNoLeader
+          expr: max(leader_election_master_status{ {{- $sel -}} }) < 1
+          for: 10m
+          labels:
+            severity: critical
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: karpenter-scaleway has no leader
+            description: Controller replicas are up but none holds the leader lease; no reconciliation is happening.
+        {{- end }}
+        {{- if not (has "KarpenterScalewayNodeClaimCreationErrors" $disabled) }}
+        - alert: KarpenterScalewayNodeClaimCreationErrors
+          expr: |-
+            sum by (backend, outcome) (
+              increase(karpenter_scaleway_nodeclaim_provisioning_duration_seconds_count{ {{- $sel -}}, outcome=~"fail|rejected|ice"}[{{ $t.creationErrorsWindow }}])
+            ) >= {{ $t.creationErrors }}
+          for: 5m
+          labels:
+            severity: warning
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: Repeated NodeClaim creation errors
+            description: {{ `'{{ $value | humanize }} NodeClaim creations ended with outcome={{ $labels.outcome }} on backend {{ $labels.backend }} over the last ` }}{{ $t.creationErrorsWindow }}{{ `. outcome=rejected means Create was refused during preflight (ScalewayNodeClass not found, zone outside the allowed list, Kapsule pool quota threshold, ...); fail means the Scaleway API call or the wait for node Ready failed; ice means Scaleway put the node in creation_error (assumed capacity shortage — Karpenter retries another type or zone, but repeated ice points at a saturated zone). See the controller logs for the cause.'` }}
+        {{- end }}
+        {{- if not (has "KarpenterScalewayPoolQuotaNearLimit" $disabled) }}
+        # quota_remaining defaults to 0 until the first Kapsule Create observes
+        # the pool count (and stays 0 on standby replicas / Kosmos), so only
+        # trust it where pools_total has been populated.
+        - alert: KarpenterScalewayPoolQuotaNearLimit
+          expr: |-
+            min by (namespace, pod) (karpenter_scaleway_kapsule_pool_quota_remaining{ {{- $sel -}} }) < {{ $t.poolQuotaRemaining }}
+            and on (namespace, pod)
+            count by (namespace, pod) (karpenter_scaleway_kapsule_pools_total{ {{- $sel -}} })
+          for: 5m
+          labels:
+            severity: warning
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: Kapsule pool quota close to the limit
+            description: {{ `'Only {{ $value }} Kapsule pools left before the Scaleway per-cluster limit. Clean up unused pools or raise the quota with Scaleway support.'` }}
+        {{- end }}
+        {{- if not (has "KarpenterScalewayPoolQuotaRejections" $disabled) }}
+        - alert: KarpenterScalewayPoolQuotaRejections
+          expr: sum(increase(karpenter_scaleway_kapsule_pool_quota_rejections_total{ {{- $sel -}} }[15m])) > 0
+          for: 5m
+          labels:
+            severity: warning
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: Kapsule pool quota threshold reached
+            description: The controller is rejecting NodeClaim creations because the cluster reached KAPSULE_POOL_QUOTA_THRESHOLD. No new Kapsule nodes can be provisioned.
+        {{- end }}
+        {{- if not (has "KarpenterScalewayNodeClaimNotReady" $disabled) }}
+        - alert: KarpenterScalewayNodeClaimNotReady
+          expr: |-
+            max by (name) (
+              operator_nodeclaim_status_condition_current_status_seconds{ {{- $sel -}}, type="Ready", status!="True"}
+            ) > {{ $t.nodeClaimNotReadySeconds }}
+          for: 1m
+          labels:
+            severity: warning
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: NodeClaim stuck in non-Ready state
+            description: {{ `'NodeClaim {{ $labels.name }} has not been Ready for {{ $value | humanizeDuration }}. Check kubectl describe nodeclaim {{ $labels.name }} and the Scaleway Instance / pool state.'` }}
+        {{- end }}
+        {{- if not (has "KarpenterScalewayPricingStale" $disabled) }}
+        # Only the leader refreshes prices; standby replicas export +Inf.
+        - alert: KarpenterScalewayPricingStale
+          expr: |-
+            karpenter_scaleway_pricing_last_update_seconds_ago{ {{- $sel -}} } > {{ $t.pricingStaleSeconds }}
+            unless on (namespace, pod)
+            (leader_election_master_status{ {{- $sel -}} } == 0)
+          for: 15m
+          labels:
+            severity: warning
+            {{- with $extraLabels }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          annotations:
+            summary: Scaleway pricing data is stale
+            description: The controller has not refreshed Scaleway prices successfully for more than {{ $t.pricingStaleSeconds }}s; it keeps scheduling on previous (or built-in catalog) prices.
+        {{- end }}
+        {{- with .Values.prometheusRule.additionalRules }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+{{- end }}

@@ -1,0 +1,43 @@
+# Local state
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/tfplan
+*.tfstate
+*.tfstate.*
+terraform/*.tfvars
+kubeconfig.yaml
+
+# Claude Code runtime state
+.claude/scheduled_tasks.lock
+.worktrees/
+
+# Build & runtime
+/karpenter-controller
+/kapsule-controller
+/cmd/controller/karpenter-controller
+/generate-catalog
+/cmd/generate-catalog/generate-catalog
+controller-run-*.log
+# Cross-compiled release artifacts (make release-binary)
+/dist/
+
+# Measurements logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Phase 2 E2E Terraform state — provisioning is per-run + ephemeral.
+# The manual root terraform/ directory keeps its own lock file.
+test/e2e/terraform/**/.terraform/
+test/e2e/terraform/**/terraform.tfstate
+test/e2e/terraform/**/terraform.tfstate.*
+test/e2e/terraform/**/.terraform.lock.hcl
+.claude/settings.local.json
+
+# Local cluster snapshots (never commit)
+pools-before*.json
+nodes-before*.txt

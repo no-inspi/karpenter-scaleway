@@ -1,0 +1,119 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+rules:
+  # Karpenter core: nodes ownership, pods watch, eviction.
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch", "patch", "update", "delete"]
+  - apiGroups: [""]
+    resources: ["nodes/finalizers"]
+    verbs: ["patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch", "delete"]
+  # Volume topology / scheduling: Karpenter lists PVCs and PVs of pending
+  # pods. Informers start lazily, so a cluster without PVCs never hits this
+  # (E2E did not), but any real cluster does and the cache never syncs.
+  - apiGroups: [""]
+    resources: ["persistentvolumes", "persistentvolumeclaims", "replicationcontrollers"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/eviction"]
+    verbs: ["create"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+  # Workload owners — needed for pod density / topology calculations.
+  - apiGroups: ["apps"]
+    resources: ["daemonsets", "deployments", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["policy"]
+    resources: ["poddisruptionbudgets"]
+    verbs: ["get", "list", "watch"]
+  # Storage — Karpenter watches volumeattachments + storageclasses + CSI.
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["volumeattachments", "storageclasses", "csinodes", "csidrivers", "csistoragecapacities"]
+    verbs: ["get", "list", "watch"]
+  # Karpenter core watches CRDs (same rule as the upstream core ClusterRole).
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["list", "watch"]
+  # Runtime classes for pod-spec resource accounting.
+  - apiGroups: ["node.k8s.io"]
+    resources: ["runtimeclasses"]
+    verbs: ["get", "list", "watch"]
+  # Karpenter CRDs (karpenter.sh).
+  - apiGroups: ["karpenter.sh"]
+    resources: ["nodeclaims", "nodepools"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["karpenter.sh"]
+    resources: ["nodeclaims/status", "nodepools/status"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["karpenter.sh"]
+    resources: ["nodeclaims/finalizers", "nodepools/finalizers"]
+    verbs: ["patch", "update"]
+  # Provider CRDs (karpenter.scaleway.com).
+  - apiGroups: ["karpenter.scaleway.com"]
+    resources: ["scalewaynodeclasses"]
+    verbs: ["get", "list", "watch", "patch", "update"]
+  - apiGroups: ["karpenter.scaleway.com"]
+    resources: ["scalewaynodeclasses/status"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["karpenter.scaleway.com"]
+    resources: ["scalewaynodeclasses/finalizers"]
+    verbs: ["patch", "update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "karpenter-scaleway.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "karpenter-scaleway.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+---
+# Namespace-scoped role for the leader-election lease and the env-source
+# Secret/ConfigMap mounts. Strictly limited to the release namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["secrets", "configmaps"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "karpenter-scaleway.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "karpenter-scaleway.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}

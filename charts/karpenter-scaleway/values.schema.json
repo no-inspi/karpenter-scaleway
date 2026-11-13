@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "karpenter-scaleway values",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["scaleway", "image"],
+  "properties": {
+    "replicaCount": {"type": "integer", "minimum": 1, "maximum": 10},
+    "image": {
+      "type": "object",
+      "required": ["repository"],
+      "properties": {
+        "repository": {"type": "string"},
+        "tag": {"type": "string"},
+        "pullPolicy": {"type": "string", "enum": ["Always", "IfNotPresent", "Never"]}
+      }
+    },
+    "imagePullSecrets": {"type": "array"},
+    "scaleway": {
+      "type": "object",
+      "required": ["organizationID", "clusterID", "region"],
+      "properties": {
+        "accessKey": {"type": "string"},
+        "secretKey": {"type": "string"},
+        "organizationID": {"type": "string"},
+        "clusterID": {"type": "string"},
+        "region": {"type": "string"},
+        "existingSecret": {"type": "string"},
+        "kosmos": {
+          "type": "object",
+          "properties": {
+            "poolID": {"type": "string"},
+            "apiKey": {"type": "string"},
+            "agentURL": {"type": "string"}
+          }
+        }
+      }
+    },
+    "forceBackend": {"type": "string", "enum": ["", "kapsule", "kosmos"]},
+    "logLevel": {"type": "string", "enum": ["debug", "info", "warn", "error"]},
+    "leaderElection": {
+      "type": "object",
+      "properties": {"enabled": {"type": "boolean"}}
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {"port": {"type": "integer"}}
+    },
+    "serviceMonitor": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "labels": {"type": "object"},
+        "namespace": {"type": "string"},
+        "interval": {"type": "string"},
+        "scrapeTimeout": {"type": "string"},
+        "relabelings": {"type": "array"},
+        "metricRelabelings": {"type": "array"}
+      }
+    },
+    "prometheusRule": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "labels": {"type": "object"},
+        "namespace": {"type": "string"},
+        "additionalAlertLabels": {"type": "object"},
+        "disabled": {"type": "array", "items": {"type": "string"}},
+        "thresholds": {
+          "type": "object",
+          "properties": {
+            "creationErrors": {"type": "integer", "minimum": 1},
+            "creationErrorsWindow": {"type": "string"},
+            "poolQuotaRemaining": {"type": "integer"},
+            "nodeClaimNotReadySeconds": {"type": "integer", "minimum": 1},
+            "pricingStaleSeconds": {"type": "integer", "minimum": 1}
+          }
+        },
+        "additionalRules": {"type": "array"}
+      }
+    },
+    "grafanaDashboard": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "namespace": {"type": "string"},
+        "labels": {"type": "object"},
+        "annotations": {"type": "object"}
+      }
+    },
+    "probes": {
+      "type": "object",
+      "properties": {"port": {"type": "integer"}}
+    },
+    "resources": {"type": "object"},
+    "nodeSelector": {"type": "object"},
+    "tolerations": {"type": "array"},
+    "affinity": {"type": "object"},
+    "podAnnotations": {"type": "object"},
+    "podLabels": {"type": "object"},
+    "serviceAccount": {
+      "type": "object",
+      "properties": {
+        "create": {"type": "boolean"},
+        "name": {"type": "string"},
+        "annotations": {"type": "object"}
+      }
+    }
+  }
+}

@@ -1,0 +1,181 @@
+# .github/workflows/e2e.yml — real-cluster E2E matrix.
+#
+# Triggers:
+#   - schedule (cron 0 2 * * *) UTC — currently disabled, see the on: block.
+#   - push tags v* — release gate, currently disabled, see the on: block.
+#   - workflow_dispatch — manual run for debugging (e.g. SCENARIO=ScaleUp,
+#     BACKEND=kapsule).
+#
+# Cost: ~30 EUR/month when run nightly, since the `backend × scenario`
+# matrix creates one cluster PER cell (harness.SelectedBackends filters on
+# E2E_BACKEND). Requires the SCW_* secrets listed in test/e2e/README.md.
+
+name: E2E real-cluster
+
+on:
+  # Nightly cron disabled. Uncomment to re-enable (02:00 UTC).
+  # schedule:
+  #   - cron: "0 2 * * *"
+  # Tag trigger disabled: releases are currently validated on a real
+  # Kapsule cluster instead of ephemeral E2E clusters. Uncomment to make
+  # the E2E matrix a release gate again.
+  # push:
+  #   tags:
+  #     - "v*"
+  workflow_dispatch:
+    inputs:
+      backend:
+        description: "kapsule | kosmos | both"
+        required: true
+        default: "both"
+      scenario:
+        description: "Optional Go test name (e.g. ScaleUp). Empty = all."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  # cancel-in-progress: false on purpose. A cancel mid-apply leaves an
+  # orphan Scaleway cluster for up to 30 min until cleanup-zombies.yml
+  # catches it. Better to queue the new run than to leak.
+  cancel-in-progress: false
+
+env:
+  GO_VERSION: "1.26.x"
+  TF_VERSION: "1.9.5"
+  HELM_VERSION: "v3.14.4"
+  E2E_REGION: fr-par
+
+jobs:
+  build-image:
+    name: build-image
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      image_repo: ${{ steps.meta.outputs.image_repo }}
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: meta
+        # The image tag for smoke runs is the commit SHA. Tagged
+        # releases ride a separate workflow (release.yml, PR-D).
+        run: |
+          echo "image_repo=rg.fr-par.scw.cloud/karpenter-scaleway/karpenter-provider-scaleway" >> "$GITHUB_OUTPUT"
+          echo "image_tag=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - name: Login to Scaleway CR
+        env:
+          SCW_CR_TOKEN: ${{ secrets.SCW_CR_TOKEN }}
+          SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+        run: |
+          # Prefer the dedicated registry token (separation of privilege);
+          # fall back to the shared CI SCW_SECRET_KEY when
+          # only the latter is provisioned. At least one MUST be set.
+          TOKEN="${SCW_CR_TOKEN:-${SCW_SECRET_KEY}}"
+          if [[ -z "${TOKEN}" ]]; then
+            echo "::error::neither SCW_CR_TOKEN nor SCW_SECRET_KEY is set; provision one (see test/e2e/README.md §Image publication)"
+            exit 1
+          fi
+          echo "${TOKEN}" | docker login rg.fr-par.scw.cloud -u nologin --password-stdin
+      - name: Build & push controller image
+        run: |
+          make release-image \
+            IMAGE_REPO="${{ steps.meta.outputs.image_repo }}" \
+            IMAGE_TAG="${{ steps.meta.outputs.image_tag }}"
+
+  matrix:
+    name: ${{ matrix.backend }}-${{ matrix.scenario }}
+    needs: build-image
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        backend: [kapsule, kosmos]
+        scenario: [ScaleUp, Drift, Consolidation, Cordon, Expire]
+        exclude:
+          # Kapsule's IsDrifted ignores Spec.ImageLabel by design (the
+          # Scaleway Kapsule control plane chooses the image internally).
+          # See pkg/backend/drift/drift.go and the comment in
+          # test/e2e/scenarios/drift_test.go. The drift scenario is
+          # Kosmos-only.
+          - backend: kapsule
+            scenario: Drift
+    env:
+      SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      SCW_DEFAULT_ORGANIZATION_ID: ${{ secrets.SCW_DEFAULT_ORGANIZATION_ID }}
+      SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
+      E2E_BACKEND: ${{ matrix.backend }}
+      E2E_IMAGE_REPO: ${{ needs.build-image.outputs.image_repo }}
+      E2E_IMAGE_TAG: ${{ needs.build-image.outputs.image_tag }}
+    steps:
+      - name: Compute safe E2E_RUN_ID
+        # Terraform run_id validation: ^[a-z0-9-]{4,40}$. Scenarios like "ScaleUp"
+        # are mixed-case at the matrix level, so lowercase before exporting.
+        # run_attempt is included so a re-run of a failed cell doesn't collide
+        # on Scaleway resource names with the leaked cluster from the first try.
+        run: |
+          SCENARIO_LOWER=$(echo '${{ matrix.scenario }}' | tr '[:upper:]' '[:lower:]')
+          echo "E2E_RUN_ID=gh-${{ github.run_id }}-a${{ github.run_attempt }}-${{ matrix.backend }}-${SCENARIO_LOWER}" >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache: true
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+      - uses: azure/setup-helm@v4
+        with:
+          version: ${{ env.HELM_VERSION }}
+
+      - name: Run scenario
+        run: |
+          set -euo pipefail
+
+          # workflow_dispatch backend filter
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            if [[ "${{ github.event.inputs.backend }}" != "both" && "${{ github.event.inputs.backend }}" != "${{ matrix.backend }}" ]]; then
+              echo "Skipped: dispatch backend filter excludes ${{ matrix.backend }}"
+              exit 0
+            fi
+            if [[ -n "${{ github.event.inputs.scenario }}" && "${{ github.event.inputs.scenario }}" != "${{ matrix.scenario }}" ]]; then
+              echo "Skipped: dispatch scenario filter excludes ${{ matrix.scenario }}"
+              exit 0
+            fi
+          fi
+
+          make e2e-cloud BACKEND="${{ matrix.backend }}" SCENARIO="${{ matrix.scenario }}"
+
+      - name: Collect controller logs on failure
+        if: failure()
+        run: |
+          # Best-effort log capture: every command guarded with || true.
+          # We do NOT want a missing log to mask the underlying test failure.
+          KCFG="$(ls -1 /tmp/e2e-*.kubeconfig 2>/dev/null | head -n1 || true)"
+          if [[ -z "${KCFG}" ]]; then
+            echo "no kubeconfig found — Terraform apply likely failed before installing"
+            exit 0
+          fi
+          mkdir -p artifacts
+          kubectl --kubeconfig="${KCFG}" -n karpenter logs deploy/karpenter-scaleway --tail=2000 \
+            > artifacts/controller.log || true
+          kubectl --kubeconfig="${KCFG}" get nodeclaims -A -o yaml > artifacts/nodeclaims.yaml || true
+          kubectl --kubeconfig="${KCFG}" get nodepools -A -o yaml > artifacts/nodepools.yaml || true
+          kubectl --kubeconfig="${KCFG}" get scalewaynodeclasses -A -o yaml > artifacts/nodeclasses.yaml || true
+
+      - name: Upload artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-${{ matrix.backend }}-${{ matrix.scenario }}-${{ github.run_id }}
+          path: |
+            artifacts/
+            test/e2e/terraform/${{ matrix.backend }}/terraform.tfstate
+          retention-days: 7

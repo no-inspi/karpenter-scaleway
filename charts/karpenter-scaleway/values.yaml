@@ -1,0 +1,143 @@
+# Default values for karpenter-scaleway. Override at install time:
+#   helm install karpenter-scaleway . \
+#     --set scaleway.accessKey=... \
+#     --set scaleway.secretKey=... \
+#     --set scaleway.organizationID=... \
+#     --set scaleway.clusterID=... \
+#     --set scaleway.region=fr-par
+#
+# Since v0.2.0 the controller is zone-agnostic: the zone is picked
+# per NodeClaim from the Karpenter scheduler. NodeClass.spec.zones
+# narrows the allowed zones; empty means "all 9 Scaleway zones".
+
+replicaCount: 2
+
+image:
+  repository: rg.fr-par.scw.cloud/karpenter-scaleway/karpenter-provider-scaleway
+  # tag defaults to .Chart.AppVersion when empty.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+scaleway:
+  # Inline credentials. Leave both blank and set existingSecret to use a
+  # pre-provisioned Secret in the release namespace.
+  accessKey: ""
+  secretKey: ""
+
+  # Required regardless of credential mechanism.
+  organizationID: ""
+  clusterID: ""
+  region: ""
+
+  # Scaleway project the controller provisions Instances in (Kosmos). Must
+  # match the project the IAM key is authorized for. Defaults to
+  # organizationID when empty — only correct when org == default project.
+  projectID: ""
+
+  # When non-empty, the chart skips creating a Secret and mounts envs from
+  # the named Secret. The Secret must define keys SCW_ACCESS_KEY and
+  # SCW_SECRET_KEY.
+  existingSecret: ""
+
+  # Kosmos-only seed-pool credentials. Required when forceBackend is
+  # "kosmos" or auto-detection resolves to kosmos.
+  kosmos:
+    poolID: ""
+    apiKey: ""
+    # Override the URL the worker downloads the Scaleway k8s-agent from.
+    agentURL: ""
+
+# "" = auto-detect via k8s.GetCluster (default).
+# "kapsule" or "kosmos" = bypass auto-detection (kill-switch).
+forceBackend: ""
+
+logLevel: info
+
+leaderElection:
+  enabled: true
+
+metrics:
+  port: 8080
+
+# Prometheus Operator integration. Both resources need the
+# monitoring.coreos.com CRDs (kube-prometheus-stack or equivalent) to be
+# installed in the cluster; they are off by default.
+serviceMonitor:
+  enabled: false
+  # Extra labels so the Prometheus instance's serviceMonitorSelector picks
+  # the ServiceMonitor up (e.g. release: kube-prometheus-stack).
+  labels: {}
+  # Namespace for the ServiceMonitor. Defaults to the release namespace.
+  namespace: ""
+  interval: 30s
+  scrapeTimeout: 10s
+  relabelings: []
+  metricRelabelings: []
+
+prometheusRule:
+  # KarpenterScalewayControllerDown is an absent(up{job=...}) alert and is
+  # only rendered when serviceMonitor.enabled is true: without the bundled
+  # scrape it would fire permanently. Bring your own rule if you scrape the
+  # controller another way.
+  enabled: false
+  # Extra labels so the Prometheus instance's ruleSelector picks the rules up.
+  labels: {}
+  # Namespace for the PrometheusRule. Defaults to the release namespace.
+  namespace: ""
+  # Labels merged into every alert (e.g. team, severity routing).
+  additionalAlertLabels: {}
+  # Built-in alerts can be switched off one by one by name, e.g.
+  # disabled: [KarpenterScalewayPricingStale]
+  disabled: []
+  thresholds:
+    # Failed (outcome=fail|rejected|ice) NodeClaim creations over `creationErrorsWindow`
+    # before KarpenterScalewayNodeClaimCreationErrors fires.
+    creationErrors: 3
+    creationErrorsWindow: 15m
+    # Kapsule pool quota headroom (pools) below which the quota alert fires.
+    # Keep it above limit - KAPSULE_POOL_QUOTA_THRESHOLD (default 150 - 140 = 10)
+    # to be warned before the controller starts rejecting Creates.
+    poolQuotaRemaining: 15
+    # How long a NodeClaim may stay with Ready != True.
+    nodeClaimNotReadySeconds: 900
+    # Pricing is refreshed every 12h; alert after two missed refreshes.
+    pricingStaleSeconds: 86400
+  # Extra raw Prometheus rules appended to the group.
+  additionalRules: []
+
+# Grafana dashboard shipped as a ConfigMap, discovered by the Grafana
+# sidecar (kube-prometheus-stack default label: grafana_dashboard: "1").
+# The raw JSON lives in dashboards/karpenter-scaleway.json and can also be
+# imported by hand.
+grafanaDashboard:
+  enabled: false
+  namespace: ""
+  labels:
+    grafana_dashboard: "1"
+  annotations: {}
+
+probes:
+  port: 8081
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+podAnnotations: {}
+podLabels: {}
+
+serviceAccount:
+  create: true
+  # Defaults to the release name when empty.
+  name: ""
+  annotations: {}

@@ -1,0 +1,39 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: scalewaynodeclasses.karpenter.scaleway.com
+spec:
+  group: karpenter.scaleway.com
+  names:
+    kind: ScalewayNodeClass
+    listKind: ScalewayNodeClassList
+    plural: scalewaynodeclasses
+    singular: scalewaynodeclass
+    shortNames: [snc]
+  scope: Cluster
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required: [zone, imageLabel]
+              properties:
+                zone:
+                  type: string
+                imageLabel:
+                  type: string
+            status:
+              type: object
+              properties:
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+      subresources:
+        status: {}

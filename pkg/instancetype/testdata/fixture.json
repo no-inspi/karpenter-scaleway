@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "sdkVersion": "v1.0.0-beta.36",
+  "denylist": { "endOfService": true, "gpu": true, "namePrefixes": ["STARDUST"] },
+  "types": [
+    {
+      "name": "POP2-2C-8G",
+      "arch": "amd64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        { "zone": "fr-par-1", "capacityType": "on-demand", "priceEURhr": 0.040, "available": true },
+        { "zone": "fr-par-2", "capacityType": "on-demand", "priceEURhr": 0.040, "available": false }
+      ]
+    },
+    {
+      "name": "POP2-4C-16G",
+      "arch": "amd64",
+      "cpuMillicores": 4000,
+      "memoryBytes": 17179869184,
+      "podsPerNode": 110,
+      "offerings": [
+        { "zone": "fr-par-1", "capacityType": "on-demand", "priceEURhr": 0.080, "available": true }
+      ]
+    },
+    {
+      "name": "COPARM1-2C-8G",
+      "arch": "arm64",
+      "cpuMillicores": 2000,
+      "memoryBytes": 8589934592,
+      "podsPerNode": 110,
+      "offerings": [
+        { "zone": "fr-par-1", "capacityType": "on-demand", "priceEURhr": 0.030, "available": true }
+      ]
+    }
+  ]
+}

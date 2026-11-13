@@ -1,0 +1,15 @@
+.git
+.github
+charts
+docs
+hack
+measurements
+terraform
+test
+*.log
+controller-run-*.log
+terraform.tfstate*
+kubeconfig.yaml
+kapsule-controller
+karpenter-controller
+*.md

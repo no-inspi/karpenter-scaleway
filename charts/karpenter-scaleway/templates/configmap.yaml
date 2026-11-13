@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "karpenter-scaleway.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "karpenter-scaleway.labels" . | nindent 4 }}
+data:
+  # The controller creates Scaleway Instances (Kosmos) in its default project;
+  # that project MUST match the one the IAM key is authorized for. Using the
+  # organization ID here only works when org == default-project (true for
+  # single-project orgs, false in general) — otherwise instance creation fails
+  # with "insufficient permissions: create compute_servers". Prefer an explicit
+  # projectID, falling back to organizationID for backward compatibility.
+  SCW_DEFAULT_PROJECT_ID: {{ .Values.scaleway.projectID | default .Values.scaleway.organizationID | quote }}
+  SCW_CLUSTER_ID: {{ .Values.scaleway.clusterID | quote }}
+  SCW_DEFAULT_REGION: {{ .Values.scaleway.region | quote }}
+  SCW_FORCE_BACKEND: {{ .Values.forceBackend | quote }}
+  LOG_LEVEL: {{ .Values.logLevel | quote }}
+  {{- with .Values.scaleway.kosmos.poolID }}
+  SCW_KOSMOS_POOL_ID: {{ . | quote }}
+  {{- end }}
+  {{- with .Values.scaleway.kosmos.agentURL }}
+  K8S_AGENT_URL: {{ . | quote }}
+  {{- end }}
