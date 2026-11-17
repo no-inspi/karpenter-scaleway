@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [0.4.9] — 2026-11-17 (Scaleway CSI zone label)
+
+### Fixed
+
+- Pods that mount a Scaleway Block Storage volume can now be provisioned
+  and their nodes replaced. The CSI driver pins PVs with
+  `topology.csi.scaleway.com/zone`, which Karpenter did not map to
+  `topology.kubernetes.io/zone`, so no instance type matched: drift and
+  expiry replacements were blocked (`DisruptionBlocked`, misleadingly
+  reported as "all available instance types exceed limits").
+
 ## [0.4.8] — 2026-11-17 (Kapsule root volume size, ephemeral-storage)
 
 ### Fixed
