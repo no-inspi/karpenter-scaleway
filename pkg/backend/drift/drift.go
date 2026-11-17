@@ -52,4 +52,8 @@ const (
 	// been stripped from the live resource. We can no longer prove it
 	// belongs to this NodeClaim, so we fail safe and recycle.
 	ReasonTags karpcp.DriftReason = "TagsDrift"
+
+	// ReasonRootVolumeSize — Kapsule only. NodeClass.Spec.RootVolumeSizeGB
+	// no longer matches the pool's root volume size.
+	ReasonRootVolumeSize karpcp.DriftReason = "RootVolumeSizeDrift"
 )

@@ -164,6 +164,11 @@ func (k *Kosmos) GetInstanceTypes(ctx context.Context, np *karpv1.NodePool) ([]*
 		return nil, err
 	}
 	types := instancetype.Filter(np, nodeClass.Spec.Zones)
+	// The Instance API default root volume size depends on the image, so
+	// ephemeral-storage is only advertised when the NodeClass sets it.
+	if nodeClass.Spec.RootVolumeSizeGB != nil {
+		instancetype.ApplyRootVolume(types, nodeClass.Spec.RootVolumeSizeGB)
+	}
 	return k.pricing.Hydrate(types), nil
 }
 

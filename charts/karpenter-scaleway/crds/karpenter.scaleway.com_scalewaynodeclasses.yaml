@@ -89,8 +89,11 @@ spec:
                   type: integer
                   format: int32
                   description: |
-                    Root volume size in gigabytes. Backend Kosmos only —
-                    silently ignored on Kapsule.
+                    Root volume size in gigabytes, applied on Kapsule and
+                    Kosmos. Sets the ephemeral-storage capacity Karpenter
+                    schedules against (90% of the volume); unset means the
+                    Kapsule default of 20 GB. Changing it drifts existing
+                    Kapsule NodeClaims (RootVolumeSizeDrift).
                   minimum: 10
                   maximum: 10000
                 rootVolumeType:

@@ -310,6 +310,6 @@ within ~90 s ; each one is backed by a Scaleway Instance :
 scw instance server list tags.0=karpenter-managed
 ```
 
-`ScalewayNodeClass` fields such as `rootVolumeSizeGB` and `publicIP` are
-Kosmos-only (ignored on Kapsule) — see the
+`ScalewayNodeClass` fields such as `rootVolumeType` and `publicIP` are
+Kosmos-only (ignored on Kapsule); `rootVolumeSizeGB` applies to both — see the
 [API reference](api/scalewaynodeclass.md).

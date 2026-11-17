@@ -336,9 +336,10 @@ func TestE2E_KapsuleUnusedFields(t *testing.T) {
 	env.applyNodeClass(nc)
 
 	got := env.waitForCondition(nc.Name, func(nc *v1alpha1.ScalewayNodeClass) bool {
-		return len(nc.Status.UnusedFieldsForBackend) == 3
+		return len(nc.Status.UnusedFieldsForBackend) == 2
 	})
-	want := map[string]bool{"rootVolumeSizeGB": true, "rootVolumeType": true, "publicIP": true}
+	// rootVolumeSizeGB is applied to Kapsule pools, so it is not listed.
+	want := map[string]bool{"rootVolumeType": true, "publicIP": true}
 	for _, f := range got.Status.UnusedFieldsForBackend {
 		if !want[f] {
 			t.Errorf("unexpected field in unusedFieldsForBackend: %q", f)

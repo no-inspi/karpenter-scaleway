@@ -19,6 +19,7 @@ import (
 	"github.com/go-logr/logr"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 	corev1 "k8s.io/api/core/v1"
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -123,6 +124,8 @@ func (k *Kapsule) Name() string { return backendName }
 //   - PoolResize: pool size != 1 (manual scale outside Karpenter).
 //   - InstanceType: pool.NodeType != NodeClaim instance-type label.
 //   - Zone: pool.Zone != NodeClaim topology label.
+//   - RootVolumeSize: NodeClass spec.rootVolumeSizeGB is set and differs
+//     from the pool's root volume size (operator resized the disk).
 //
 // A pool that has disappeared is not drift — Karpenter's GC controller
 // observes the missing instance via List/Get and recycles the NodeClaim
@@ -158,6 +161,28 @@ func (k *Kapsule) IsDrifted(ctx context.Context, nc *karpv1.NodeClaim) (karpcp.D
 	if pool.Size != 1 {
 		return drift.ReasonPoolResize, nil
 	}
+	return k.rootVolumeDrift(ctx, nc, pool)
+}
+
+// rootVolumeDrift reports ReasonRootVolumeSize when the NodeClass asks for a
+// root volume size the pool does not have. An unset spec.rootVolumeSizeGB, a
+// pool without a reported size, or a missing NodeClass (or NodeClassRef) is
+// not drift.
+func (k *Kapsule) rootVolumeDrift(ctx context.Context, nc *karpv1.NodeClaim, pool *scaleway.KapsulePool) (karpcp.DriftReason, error) {
+	if pool.RootVolumeSizeGB == 0 || nc.Spec.NodeClassRef == nil {
+		return "", nil
+	}
+	nodeClass, err := k.fetchNodeClass(ctx, nc)
+	if apierrors.IsNotFound(err) {
+		return "", nil
+	}
+	if err != nil {
+		return "", fmt.Errorf("fetch nodeclass: %w", err)
+	}
+	want := nodeClass.Spec.RootVolumeSizeGB
+	if want != nil && int64(*want) != pool.RootVolumeSizeGB {
+		return drift.ReasonRootVolumeSize, nil
+	}
 	return "", nil
 }
 
@@ -172,6 +197,7 @@ func (k *Kapsule) GetInstanceTypes(ctx context.Context, np *karpv1.NodePool) ([]
 		return nil, err
 	}
 	types := instancetype.Filter(np, nodeClass.Spec.Zones)
+	instancetype.ApplyRootVolume(types, nodeClass.Spec.RootVolumeSizeGB)
 	out := k.pricing.Hydrate(types)
 	k.unavailable.Apply(out)
 	return out, nil
@@ -188,8 +214,8 @@ func (k *Kapsule) Healthcheck(ctx context.Context) error {
 // node to reach Scaleway NodeStatusReady, and returns the hydrated NodeClaim.
 //
 // Kapsule pools manage instance image, kubelet config and TLS bootstrap
-// internally — the backend only needs the InstanceType and pool tags.
-// Spec fields ImageLabel, RootVolumeSizeGB, RootVolumeType and PublicIP are
+// internally — the backend only needs the InstanceType, pool tags and the
+// root volume size. Spec fields ImageLabel, RootVolumeType and PublicIP are
 // silently ignored here; the NodeClass reconciler surfaces them under
 // status.unusedFieldsForBackend so configuration mistakes stay visible.
 func (k *Kapsule) Create(ctx context.Context, nc *karpv1.NodeClaim) (*karpv1.NodeClaim, error) {
@@ -268,10 +294,11 @@ func (k *Kapsule) quotaPreflight(ctx context.Context) error {
 func (k *Kapsule) createInZone(ctx context.Context, nc *karpv1.NodeClaim, zone string, instanceType string, nodeClass *v1alpha1.ScalewayNodeClass) (*karpv1.NodeClaim, error) {
 	metrics.Mark(k.log, "A", "T0", nc.Name)
 	pool, err := k.kapsule.CreatePool(ctx, scaleway.CreatePoolParams{
-		Zone:         scw.Zone(zone),
-		InstanceType: instanceType,
-		Name:         nc.Name,
-		ExtraTags:    flattenTags(nodeClass.Spec.Tags),
+		Zone:             scw.Zone(zone),
+		InstanceType:     instanceType,
+		Name:             nc.Name,
+		ExtraTags:        flattenTags(nodeClass.Spec.Tags),
+		RootVolumeSizeGB: nodeClass.Spec.RootVolumeSizeGB,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("kapsule create pool: %w", err)

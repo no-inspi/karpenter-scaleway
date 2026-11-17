@@ -38,6 +38,9 @@ type KapsulePool struct {
 	// Size is the pool's current node count. Karpenter creates pools of
 	// size=1; drift detection treats anything else as ManualResize.
 	Size uint32
+	// RootVolumeSizeGB is the pool's root volume size in GB (10^9 bytes),
+	// 0 when Scaleway did not report one.
+	RootVolumeSizeGB int64
 }
 
 // KapsuleNode is a thin view of a node inside a KapsulePool.
@@ -60,11 +63,14 @@ func NewKapsuleClient(scwClient *scw.Client, region scw.Region, clusterID string
 // CreatePoolParams carries the fields a caller needs to provision a Kapsule
 // pool of size 1. Required: Zone, InstanceType, Name. ExtraTags are merged
 // with the well-known karpenter tags and propagated to the pool.
+// RootVolumeSizeGB, when non-nil, sets the node's root volume size; nil keeps
+// the Scaleway default for the node type.
 type CreatePoolParams struct {
-	Zone         scw.Zone
-	InstanceType string
-	Name         string
-	ExtraTags    []string
+	Zone             scw.Zone
+	InstanceType     string
+	Name             string
+	ExtraTags        []string
+	RootVolumeSizeGB *int32
 }
 
 // CreatePool creates a Kapsule node pool of size 1 tagged to the given NodeClaim.
@@ -79,6 +85,11 @@ func (c *KapsuleClient) CreatePool(ctx context.Context, params CreatePoolParams)
 		return nil, fmt.Errorf("kapsule: InstanceType and Name are required")
 	}
 	tags := append([]string{TagKarpenterManaged, nodeClaimTagPrefix + params.Name}, params.ExtraTags...)
+	var rootVolumeSize *scw.Size
+	if params.RootVolumeSizeGB != nil {
+		size := scw.Size(*params.RootVolumeSizeGB) * scw.GB
+		rootVolumeSize = &size
+	}
 	pool, err := c.api.CreatePool(&k8s.CreatePoolRequest{
 		Region:      c.region,
 		ClusterID:   c.clusterID,
@@ -88,6 +99,9 @@ func (c *KapsuleClient) CreatePool(ctx context.Context, params CreatePoolParams)
 		Autoscaling: false,
 		Zone:        params.Zone,
 		Tags:        tags,
+		// RootVolumeType stays empty: Scaleway picks the node type's
+		// default (sbs_5k on PRO2/POP2).
+		RootVolumeSize: rootVolumeSize,
 		// Karpenter v1 expects nodes to register with
 		// karpenter.sh/unregistered:NoExecute and removes it once it has
 		// applied the NodePool labels and taints. It has to be a startup
@@ -314,6 +328,9 @@ func toKapsulePool(p *k8s.Pool) *KapsulePool {
 		NodeType: NormalizeNodeType(p.NodeType),
 		Zone:     p.Zone,
 		Size:     p.Size,
+	}
+	if p.RootVolumeSize != nil {
+		kp.RootVolumeSizeGB = int64(*p.RootVolumeSize / scw.GB)
 	}
 	for _, t := range p.Tags {
 		if len(t) > len(nodeClaimTagPrefix) && t[:len(nodeClaimTagPrefix)] == nodeClaimTagPrefix {

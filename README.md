@@ -152,7 +152,7 @@ spec:
   # Optional whitelist; empty / omitted means "all 9 Scaleway zones".
   zones: ["fr-par-1", "fr-par-2", "fr-par-3"]
   imageLabel: ubuntu_jammy
-  rootVolumeSizeGB: 50         # kosmos-only, ignored on kapsule
+  rootVolumeSizeGB: 50         # root disk; also sets the ephemeral-storage capacity
   publicIP: true               # kosmos-only, ignored on kapsule
 ---
 apiVersion: karpenter.sh/v1
