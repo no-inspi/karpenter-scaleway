@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.4.9] — 2026-11-17 (Scaleway CSI zone label)
+
 ### Fixed
 
 - Pods that mount a Scaleway Block Storage volume can now be provisioned

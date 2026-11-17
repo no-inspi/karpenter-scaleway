@@ -41,7 +41,7 @@ The controller image and the Helm chart are published side-by-side in the
 
 ```sh
 helm show chart oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.8
+  --version 0.4.9
 ```
 
 ## Step 2 — Install the chart
@@ -49,7 +49,7 @@ helm show chart oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-sc
 ```sh
 helm install karpenter-scaleway \
   oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.8 \
+  --version 0.4.9 \
   --namespace karpenter --create-namespace \
   --set scaleway.accessKey=$SCW_ACCESS_KEY \
   --set scaleway.secretKey=$SCW_SECRET_KEY \

@@ -23,7 +23,7 @@ Released charts are published to the Scaleway Container Registry:
 ```sh
 helm install karpenter-scaleway \
   oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.8 \
+  --version 0.4.9 \
   --namespace karpenter --create-namespace \
   --set scaleway.accessKey=$SCW_ACCESS_KEY \
   --set scaleway.secretKey=$SCW_SECRET_KEY \
