@@ -35,8 +35,11 @@ type ScalewayNodeClassSpec struct {
 	// +optional
 	Tags map[string]string `json:"tags,omitempty"`
 
-	// RootVolumeSizeGB is the size of the root volume in gigabytes.
-	// kosmosOnly: silently ignored on Kapsule pools.
+	// RootVolumeSizeGB is the size of the root volume in gigabytes. Applied
+	// to Kapsule pools and Kosmos instances. It also sets the
+	// ephemeral-storage capacity Karpenter schedules against (90% of the
+	// volume); unset means the Kapsule default of 20 GB. Changing it marks
+	// existing Kapsule NodeClaims as drifted (RootVolumeSizeDrift).
 	// +kubebuilder:validation:Minimum=10
 	// +kubebuilder:validation:Maximum=10000
 	// +optional

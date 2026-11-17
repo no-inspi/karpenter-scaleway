@@ -22,7 +22,7 @@ scope: Cluster
 | `zone` | string | yes | — | Scaleway zone (`fr-par-1`, `nl-ams-2`, …). Validated by an OpenAPI enum. |
 | `imageLabel` | string | yes | — | Marketplace label (e.g. `ubuntu_jammy`) or a UUID. Validated at reconcile time via the Scaleway Marketplace API; failure surfaces as `Ready=False`/`ImageNotFound`. |
 | `tags` | map[string]string | no | `{}` | Up to 50 entries. Encoded as `key=value` Scaleway tags on the underlying Instance (Kosmos) or Pool (Kapsule). |
-| `rootVolumeSizeGB` | *int32 | no | — | 10 ≤ size ≤ 10000. **Kosmos only** — silently ignored on Kapsule. |
+| `rootVolumeSizeGB` | *int32 | no | — (Kapsule: 20) | 10 ≤ size ≤ 10000. Applied on Kapsule and Kosmos. Sets the `ephemeral-storage` capacity Karpenter schedules against (90% of the volume). Changing it drifts existing Kapsule nodes (`RootVolumeSizeDrift`). |
 | `rootVolumeType` | string | no | — | One of `l_ssd`, `sbs_volume`. **Kosmos only**. `b_ssd` was deprecated by Scaleway in 2026 (Block Storage v1 retired) and is rejected by the API. |
 | `publicIP` | *bool | no | — (Scaleway default true) | **Kosmos only**. The k8s-agent registration requires Internet reachability, so leaving this `true` is the safe default. |
 
@@ -31,7 +31,7 @@ scope: Cluster
 | Field | Type | Notes |
 |---|---|---|
 | `conditions` | []metav1.Condition | Always contains a `Ready` condition. |
-| `unusedFieldsForBackend` | []string | Spec fields the resolved backend ignores (e.g. `rootVolumeSizeGB` on Kapsule). |
+| `unusedFieldsForBackend` | []string | Spec fields the resolved backend ignores (e.g. `rootVolumeType` on Kapsule). |
 | `validatedAt` | metav1.Time | Last successful Marketplace round-trip. |
 | `resolvedImageID` | string | Scaleway image UUID resolved from `imageLabel`. |
 

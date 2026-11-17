@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+## [0.4.8] — 2026-11-17 (Kapsule root volume size, ephemeral-storage)
+
+### Fixed
+
+- Kapsule: `spec.rootVolumeSizeGB` is now applied to the node pool instead
+  of being ignored. Changing it marks existing Kapsule NodeClaims as drifted
+  (`RootVolumeSizeDrift`) so they are replaced with the new disk size.
+- Instance types now advertise `ephemeral-storage` (90% of the root volume,
+  20 GB by default on Kapsule, minus a 10% eviction threshold). Before,
+  Karpenter could never place a pod that requests `ephemeral-storage`, and
+  could not bin-pack disk-heavy pods. On Kosmos it is advertised only when
+  `rootVolumeSizeGB` is set.
+
 ### Changed
 
 - Kapsule is the supported backend; **Kosmos is marked experimental**

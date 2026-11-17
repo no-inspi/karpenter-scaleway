@@ -406,3 +406,50 @@ func TestIsRetryable(t *testing.T) {
 		})
 	}
 }
+
+// TestCreatePool_RootVolumeSize checks rootVolumeSizeGB reaches the API in
+// bytes and is read back on the returned pool.
+func TestCreatePool_RootVolumeSize(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		size *int32
+		want *scw.Size
+	}{
+		{name: "unset keeps the Scaleway default", size: nil, want: nil},
+		{name: "explicit size", size: ptrInt32(80), want: ptrSize(80 * scw.GB)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var got k8s.CreatePoolRequest
+			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				if err := json.NewDecoder(r.Body).Decode(&got); err != nil {
+					t.Errorf("decode CreatePool body: %v", err)
+				}
+				w.Header().Set("Content-Type", "application/json")
+				_, _ = w.Write([]byte(`{"id":"pool-uuid","zone":"fr-par-1","node_type":"pro2_xxs","size":1,"root_volume_size":80000000000}`))
+			}))
+			defer srv.Close()
+
+			pool, err := newKapsuleClientForTest(t, srv).CreatePool(context.Background(), CreatePoolParams{
+				Zone:             scw.Zone("fr-par-1"),
+				InstanceType:     "PRO2-XXS",
+				Name:             "nc-disk",
+				RootVolumeSizeGB: tc.size,
+			})
+			if err != nil {
+				t.Fatalf("CreatePool: %v", err)
+			}
+			switch {
+			case tc.want == nil && got.RootVolumeSize != nil:
+				t.Errorf("root_volume_size = %d, want unset", *got.RootVolumeSize)
+			case tc.want != nil && (got.RootVolumeSize == nil || *got.RootVolumeSize != *tc.want):
+				t.Errorf("root_volume_size = %v, want %d", got.RootVolumeSize, *tc.want)
+			}
+			if pool.RootVolumeSizeGB != 80 {
+				t.Errorf("pool.RootVolumeSizeGB = %d, want 80", pool.RootVolumeSizeGB)
+			}
+		})
+	}
+}
+
+func ptrInt32(v int32) *int32      { return &v }
+func ptrSize(v scw.Size) *scw.Size { return &v }

@@ -200,9 +200,6 @@ func computeUnusedFieldsForBackend(spec v1alpha1.ScalewayNodeClassSpec, kind bac
 		return nil
 	}
 	var unused []string
-	if spec.RootVolumeSizeGB != nil {
-		unused = append(unused, "rootVolumeSizeGB")
-	}
 	if spec.RootVolumeType != "" {
 		unused = append(unused, "rootVolumeType")
 	}

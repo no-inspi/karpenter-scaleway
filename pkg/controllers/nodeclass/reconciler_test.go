@@ -173,6 +173,7 @@ func TestReconcile_CacheHitSecondReconcile(t *testing.T) {
 }
 
 // Backend Kapsule: kosmos-only fields surface in unusedFieldsForBackend.
+// rootVolumeSizeGB is applied to Kapsule pools, so it is not listed.
 func TestReconcile_UnusedFieldsForKapsule(t *testing.T) {
 	size := int32(50)
 	pub := true
@@ -195,7 +196,7 @@ func TestReconcile_UnusedFieldsForKapsule(t *testing.T) {
 	}
 	got := &v1alpha1.ScalewayNodeClass{}
 	_ = kc.Get(context.Background(), types.NamespacedName{Name: "kap"}, got)
-	want := []string{"rootVolumeSizeGB", "rootVolumeType", "publicIP"}
+	want := []string{"rootVolumeType", "publicIP"}
 	if len(got.Status.UnusedFieldsForBackend) != len(want) {
 		t.Fatalf("expected %v, got %v", want, got.Status.UnusedFieldsForBackend)
 	}

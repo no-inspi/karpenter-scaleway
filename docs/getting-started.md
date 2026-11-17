@@ -41,7 +41,7 @@ The controller image and the Helm chart are published side-by-side in the
 
 ```sh
 helm show chart oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.7
+  --version 0.4.8
 ```
 
 ## Step 2 — Install the chart
@@ -49,7 +49,7 @@ helm show chart oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-sc
 ```sh
 helm install karpenter-scaleway \
   oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.7 \
+  --version 0.4.8 \
   --namespace karpenter --create-namespace \
   --set scaleway.accessKey=$SCW_ACCESS_KEY \
   --set scaleway.secretKey=$SCW_SECRET_KEY \
@@ -310,6 +310,6 @@ within ~90 s ; each one is backed by a Scaleway Instance :
 scw instance server list tags.0=karpenter-managed
 ```
 
-`ScalewayNodeClass` fields such as `rootVolumeSizeGB` and `publicIP` are
-Kosmos-only (ignored on Kapsule) — see the
+`ScalewayNodeClass` fields such as `rootVolumeType` and `publicIP` are
+Kosmos-only (ignored on Kapsule); `rootVolumeSizeGB` applies to both — see the
 [API reference](api/scalewaynodeclass.md).
