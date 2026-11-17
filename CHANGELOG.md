@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.4.8] — 2026-11-17 (Kapsule root volume size, ephemeral-storage)
+
 ### Fixed
 
 - Kapsule: `spec.rootVolumeSizeGB` is now applied to the node pool instead

@@ -2,8 +2,8 @@ apiVersion: v2
 name: karpenter-scaleway
 description: Karpenter cloudprovider for Scaleway-managed Kubernetes (Kapsule and Kosmos).
 type: application
-version: 0.4.7
-appVersion: "0.4.7"
+version: 0.4.8
+appVersion: "0.4.8"
 keywords:
   - karpenter
   - scaleway

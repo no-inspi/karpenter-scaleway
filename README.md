@@ -61,6 +61,8 @@ boot.
   catalog regenerated (119 types).
 - **v0.4.7** — nodes start with the `karpenter.sh/unregistered:NoExecute`
   taint (Kapsule pool startup taint, Kosmos kubelet flag).
+- **v0.4.8** — `rootVolumeSizeGB` applied on Kapsule; instance types
+  advertise `ephemeral-storage` sized from the root volume.
 - **Next** — automated real-cluster E2E tests in CI.
 
 See [CHANGELOG.md](CHANGELOG.md) for the full release notes.
@@ -108,7 +110,7 @@ walkthrough.
 ```sh
 helm install karpenter-scaleway \
   oci://rg.fr-par.scw.cloud/karpenter-scaleway/charts/karpenter-scaleway \
-  --version 0.4.7 \
+  --version 0.4.8 \
   --namespace karpenter --create-namespace \
   --set scaleway.accessKey=$SCW_ACCESS_KEY \
   --set scaleway.secretKey=$SCW_SECRET_KEY \
